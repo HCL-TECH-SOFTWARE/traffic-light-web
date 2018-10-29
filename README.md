@@ -1,5 +1,5 @@
 # traffic-light-web
-![screenshot](https://github.com/hcl-pnp-rtist/traffic-light-web/blob/master/webapp/public/images/screenshot.png)
+<img src="https://github.com/hcl-pnp-rtist/traffic-light-web/blob/master/webapp/public/images/screenshot.png" width="50" height="50">
 A traffic light controller implemented in [HCL RTist](https://www.devops-community.com/realtime-software-tooling-rtist.html). Communicates with a web server (implemented in Node JS) for visualizing application behavior in a web application.
 ## Starting the web server
 * `cd webapp`
