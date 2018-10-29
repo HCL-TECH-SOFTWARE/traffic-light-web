@@ -1,11 +1,6 @@
 /*******************************************************************************
-* Licensed Materials - Property of HCL
-* (c) Copyright HCL Technologies Ltd. 2018.  All Rights Reserved.
-*
-* Note to U.S. Government Users Restricted Rights:
-* Use, duplication or disclosure restricted by GSA ADP Schedule
-* Contract with IBM Corp.
-*******************************************************************************/
+ * (c) Copyright HCL Technologies Ltd. 2018.  MIT Licensed!
+ *******************************************************************************/
 
 /**
  * Client application entry point

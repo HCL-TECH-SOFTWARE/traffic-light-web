@@ -4,8 +4,8 @@
   "private": true,
   "description": "TrafficLight Sample Web Server",
   "keywords": [],
-  "author": "HCL",
-  "license": "",
+  "author": "Mattias Mohlin",
+  "license": "MIT",
   "main": "app.js",
   "dependencies": {
     "express": "^4.12.3",    
