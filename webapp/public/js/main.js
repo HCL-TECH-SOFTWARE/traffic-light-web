@@ -30,7 +30,9 @@ $(function () {
         $('#pedSignal').attr('src', '/images/' + msg.light);
     });
 
-    //$('#request_data').click(function() {
-    //    socket.emit('request_data');
-    //});
+    $('#ped_button').click(function() {
+        $.get('/ped_button', function () {
+
+        });
+    });
 });

@@ -42,9 +42,30 @@ app.get('/jquery', function(req, res) {
     res.sendFile(__dirname + '/public/js/jquery/jquery.min.js');
 });
 
+var rtAppCallback = null;
+
+// Messages from web application
+app.get('/ped_button', function(req, res) {
+    if (!rtAppCallback)
+        console.log('RT application not running!');
+    
+    rtAppCallback('ped_button');    
+    res.end();
+});
+
+// Messages to RT application
+app.get('/command', function(req, res) {
+    console.log('Ready for command');
+    rtAppCallback = function (cmd) {
+        res.send(cmd);
+    };
+    // Let this request be pending until there is any command to send back
+});
+
+// Messages from RT application
 app.get('/trafficlight', function(req, res) {
     let light = req.query.light;
-    console.log("Light: " + light);
+    //console.log("Light: " + light);
 
     // Send light info to all connected web clients
     io.emit('light', {'light' : light});

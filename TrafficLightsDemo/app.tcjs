@@ -32,5 +32,14 @@ tc.threads = [
     logical: [
         'ServerThread'
     ]
+},
+{
+    name: 'PushButtonThread',
+    implClass: 'RTPeerController',
+    stackSize: '20000',
+    priority: 'DEFAULT_MAIN_PRIORITY',
+    logical: [
+        'PushButtonThread'
+    ]
 }
 ];
