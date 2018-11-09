@@ -46,8 +46,10 @@ var rtAppCallback = null;
 
 // Messages from web application
 app.get('/ped_button', function(req, res) {
-    if (!rtAppCallback)
+    if (!rtAppCallback) {
         console.log('RT application not running!');
+        return;
+    }
     
     rtAppCallback('ped_button');    
     res.end();
