@@ -43,3 +43,7 @@ tc.threads = [
     ]
 }
 ];
+tc.prerequisites = [
+    'platform:/resource/LibHttpServer/httpServerLib.tcjs'
+];
+tc.executableName = 'executable$(EXEC_EXT)';
