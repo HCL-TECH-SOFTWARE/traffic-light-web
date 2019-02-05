@@ -3,6 +3,8 @@
 
 A traffic light controller implemented in [HCL RTist](https://www.devops-community.com/realtime-software-tooling-rtist.html). Communicates with a web server (implemented in Node JS) for visualizing application behavior in a web application. Also shows how a web application can send messages to the C++ application.
 
+Note: The communication with the web server uses the [lib-http-server](https://github.com/hcl-pnp-rtist/lib-http-server) library, so you must clone that repository also into your workspace.
+
 ## Starting the web server
 * `cd webapp`
 
@@ -14,6 +16,7 @@ A traffic light controller implemented in [HCL RTist](https://www.devops-communi
 
 ## Building and running the traffic light controller software
 * Create an Eclipse workspace and import the project in the TrafficLightsDemo folder.
+* Also import the project from the [lib-http-server](https://github.com/hcl-pnp-rtist/lib-http-server) library.
 * By default, the code will be compiled and linked with MinGW. If you want to use other build tools, double-click the transformation configuration (TC) called 'app' and edit the properties as necessary (typically "TargetRTS configuration", "Make type" and "Make command").
 * Right-click on the TC and do **Build**.
 * `cd <workspace-folder>\TrafficLightsDemo_target\default`
