@@ -1195,7 +1195,7 @@ frame.incarnate(pushButton, EmptyActorClass, (const void*) 0, (const RTObject_cl
         </region>
       </ownedBehavior>
     </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_FXIDoNXEEei3BJT-OqdJZA" name="PushButton">
+    <packagedElement xmi:type="uml:Class" xmi:id="_FXIDoNXEEei3BJT-OqdJZA" name="PushButton" clientDependency="_usAgwCh8Eem0UtZqFR6jHw">
       <eAnnotations xmi:id="_FXSbsNXEEei3BJT-OqdJZA" source="uml2.diagrams" references="_FXSbsdXEEei3BJT-OqdJZA">
         <contents xmi:type="umlnotation:UMLDiagram" xmi:id="_FXSbsdXEEei3BJT-OqdJZA" type="Structure" element="_FXIDoNXEEei3BJT-OqdJZA" measurementUnit="Himetric">
           <children xmi:type="umlnotation:UMLShape" xmi:id="_FXSbstXEEei3BJT-OqdJZA" type="StructureDiagramFrame" element="_FXIDoNXEEei3BJT-OqdJZA" fontName="Segoe UI" fontHeight="8" transparency="0" lineColor="14263149" lineWidth="1" showStereotype="Label">
@@ -1287,7 +1287,10 @@ frame.incarnate(pushButton, EmptyActorClass, (const void*) 0, (const RTObject_cl
             <redefinedTransition href="platform:/resource/LibHttpServer/LibHttpServer.emx#_wbFagd62Eeife8wA8rm4kw?LibHttpServer/HttpServer_In/State%20Machine/Region1/Initial?"/>
             <effect xmi:type="uml:OpaqueBehavior" xmi:id="_Yn2s4OP7Eeidw6mVNRtdFA" name="Effect">
               <language>C++</language>
-              <body>configureServer(&quot;localhost&quot;, 4000, &quot;command&quot;);</body>
+              <body>std::string webhost;&#xD;
+unsigned int webport;&#xD;
+getWebHostAndPort(webhost, webport);&#xD;
+configureServer(webhost, webport, &quot;command&quot;);</body>
             </effect>
           </transition>
           <extendedRegion href="platform:/resource/LibHttpServer/LibHttpServer.emx#_wbEMYd62Eeife8wA8rm4kw?LibHttpServer/HttpServer_In/State%20Machine/Region1?"/>
@@ -1296,7 +1299,7 @@ frame.incarnate(pushButton, EmptyActorClass, (const void*) 0, (const RTObject_cl
       </ownedBehavior>
       <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_4EnlcN67Eeife8wA8rm4kw" name="onMessageReceived" specification="_4Em-YN67Eeife8wA8rm4kw">
         <language>C++</language>
-        <body>	cout &lt;&lt; &quot;Got message &quot; &lt;&lt; msg &lt;&lt; endl &lt;&lt; flush;&#xD;
+        <body>std::cout &lt;&lt; &quot;Got message &quot; &lt;&lt; msg.c_str() &lt;&lt; std::endl &lt;&lt; std::flush;&#xD;
 if (msg == &quot;ped_button&quot;) {&#xD;
 	// Button was pushed&#xD;
 	trafficLight.pedestrian().send();&#xD;
@@ -1494,7 +1497,7 @@ if (msg == &quot;ped_button&quot;) {&#xD;
         <name xsi:nil="true"/>
       </packagedElement>
     </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_UqQ4sNXTEei7WZvlxd1NlA" name="Server">
+    <packagedElement xmi:type="uml:Class" xmi:id="_UqQ4sNXTEei7WZvlxd1NlA" name="Server" clientDependency="_aH7_wCh8Eem0UtZqFR6jHw">
       <eAnnotations xmi:id="_UrC70NXTEei7WZvlxd1NlA" source="uml2.diagrams" references="_UrC70dXTEei7WZvlxd1NlA">
         <contents xmi:type="umlnotation:UMLDiagram" xmi:id="_UrC70dXTEei7WZvlxd1NlA" type="Structure" element="_UqQ4sNXTEei7WZvlxd1NlA" measurementUnit="Himetric">
           <children xmi:type="umlnotation:UMLShape" xmi:id="_UrC70tXTEei7WZvlxd1NlA" type="StructureDiagramFrame" element="_UqQ4sNXTEei7WZvlxd1NlA" fontName="Segoe UI" fontHeight="8" transparency="0" lineColor="14263149" lineWidth="1" showStereotype="Label">
@@ -1644,8 +1647,10 @@ if (msg == &quot;ped_button&quot;) {&#xD;
             <redefinedTransition href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_ubAN6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/Region1/Initial?"/>
             <effect xmi:type="uml:OpaqueBehavior" xmi:id="_kpJJ8OP6Eeidw6mVNRtdFA" name="Effect">
               <language>C++</language>
-              <body>// Configure with default host name and port number. Override this transition to use other values.&#xD;
-configureServer(&quot;localhost&quot;, 4000);</body>
+              <body>std::string webhost;&#xD;
+unsigned int webport;&#xD;
+getWebHostAndPort(webhost, webport);&#xD;
+configureServer(webhost, webport);</body>
             </effect>
           </transition>
           <extendedRegion href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_qJkN6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/Region1?"/>
@@ -1705,6 +1710,12 @@ configureServer(&quot;localhost&quot;, 4000);</body>
         <name xsi:nil="true"/>
       </packagedElement>
     </packagedElement>
+    <packagedElement xmi:type="uml:Artifact" xmi:id="_KofPMCh8Eem0UtZqFR6jHw" name="Utils" clientDependency="_Koi5kCh8Eem0UtZqFR6jHw"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_Koi5kCh8Eem0UtZqFR6jHw" name="" client="_KofPMCh8Eem0UtZqFR6jHw">
+      <supplier xmi:type="uml:Class" href="platform:/resource/IoTBecomeAnRTist/MainModel.emx#_5TgPcCOQEem0UtZqFR6jHw?RTApp/StdString?"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_aH7_wCh8Eem0UtZqFR6jHw" name="" supplier="_KofPMCh8Eem0UtZqFR6jHw" client="_UqQ4sNXTEei7WZvlxd1NlA"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_usAgwCh8Eem0UtZqFR6jHw" name="" supplier="_KofPMCh8Eem0UtZqFR6jHw" client="_FXIDoNXEEei3BJT-OqdJZA"/>
     <profileApplication xmi:id="_rx25zNXDEei3BJT-OqdJZA">
       <eAnnotations xmi:id="_rx25zdXDEei3BJT-OqdJZA" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Standard.profile.uml#_yzU58YinEdqtvbnfB2L_5w"/>
@@ -1769,7 +1780,7 @@ configureServer(&quot;localhost&quot;, 4000);</body>
   <UMLRealTime:CapsulePart xmi:id="_UrZhINXTEei7WZvlxd1NlA" base_Property="_UrIbYNXTEei7WZvlxd1NlA"/>
   <UMLRealTime:RTPort xmi:id="_pspGUNXTEei7WZvlxd1NlA" isWired="false" base_Port="_psi_sNXTEei7WZvlxd1NlA"/>
   <CppPropertySets:GeneralCapsuleProperties xmi:id="_r9U6ENXUEei7WZvlxd1NlA" base_Class="_UqQ4sNXTEei7WZvlxd1NlA">
-    <headerPreface xmi:id="_KPjs4N6xEeife8wA8rm4kw" body="#include &lt;iostream>&#xD;&#xA;using namespace std;&#xD;&#xA;#include &quot;Socket.h&quot;"/>
+    <headerPreface xmi:id="_KPjs4N6xEeife8wA8rm4kw" body="#include &lt;iostream>&#xD;&#xA;using namespace std;"/>
   </CppPropertySets:GeneralCapsuleProperties>
   <UMLRealTime:ProtocolContainer xmi:id="_DElFUNXcEei7WZvlxd1NlA" base_Package="_DEipENXcEei7WZvlxd1NlA"/>
   <UMLRealTime:Protocol xmi:id="_DEoIoNXcEei7WZvlxd1NlA" base_Collaboration="_DElsYNXcEei7WZvlxd1NlA"/>
@@ -1784,7 +1795,7 @@ configureServer(&quot;localhost&quot;, 4000);</body>
   <UMLRealTime:RTConnector xmi:id="_3e_NUNX-Eei7WZvlxd1NlA" base_Connector="_3e9_MNX-Eei7WZvlxd1NlA"/>
   <UMLRealTime:RTPort xmi:id="_Th0AoNaIEei7WZvlxd1NlA" isWired="false" base_Port="_Thw9UNaIEei7WZvlxd1NlA"/>
   <CppPropertySets:GeneralCapsuleProperties xmi:id="_Mth5ANzhEeizO_iNOoSWfw" base_Class="_FXIDoNXEEei3BJT-OqdJZA">
-    <headerPreface xmi:id="_MtigENzhEeizO_iNOoSWfw" body="#include &lt;iostream>&#xD;&#xA;using namespace std;&#xD;&#xA;#include &quot;Socket.h&quot;&#xD;&#xA;"/>
+    <headerPreface xmi:id="_MtigENzhEeizO_iNOoSWfw" body="#include &lt;iostream>"/>
   </CppPropertySets:GeneralCapsuleProperties>
   <UMLRealTime:RTRedefinableElement xmi:id="_jFfhIN6wEeife8wA8rm4kw">
     <base_RedefinableElement xmi:type="uml:StateMachine" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_o7cN6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine?"/>
@@ -1837,4 +1848,11 @@ configureServer(&quot;localhost&quot;, 4000);</body>
   <UMLRealTime:RTRedefinableElement xmi:id="_Yn03sOP7Eeidw6mVNRtdFA" base_RedefinableElement="_Yn0QoOP7Eeidw6mVNRtdFA">
     <rootFragment xmi:type="uml:Transition" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_wbFagd62Eeife8wA8rm4kw?LibHttpServer/HttpServer_In/State%20Machine/Region1/Initial?"/>
   </UMLRealTime:RTRedefinableElement>
+  <CppPropertySets:GeneralArtifactProperties xmi:id="_KojgoCh8Eem0UtZqFR6jHw" base_Artifact="_KofPMCh8Eem0UtZqFR6jHw">
+    <Header xmi:id="_KojgoSh8Eem0UtZqFR6jHw" body="void getWebHostAndPort(std::string&amp; webhost, unsigned int&amp; webport);"/>
+    <Implementation xmi:id="_Kojgoih8Eem0UtZqFR6jHw" body="void getWebHostAndPort(std::string&amp; webhost, unsigned int&amp; webport) {&#xD;&#xA;&#x9;int ac = RTMain::argCount();&#xD;&#xA;&#x9;const char * const * av = RTMain::argStrings();&#xD;&#xA;&#xD;&#xA;&#x9;while( --ac > 0 ) {&#xD;&#xA;&#x9;&#x9;const char* arg = *++av;&#xD;&#xA;&#x9;&#x9;if( RTMemoryUtil::strcmp( arg, &quot;-webhost=&quot;, 9 ) == 0 )&#xD;&#xA;&#x9;&#x9;&#x9;webhost = *av + 9;&#xD;&#xA;&#x9;&#x9;if( RTMemoryUtil::strcmp( arg, &quot;-webport=&quot;, 9 ) == 0 )&#xD;&#xA;&#x9;&#x9;&#x9;webport = RTMemoryUtil::atoi(*av + 9);&#xD;&#xA;&#x9;}&#xD;&#xA;}"/>
+  </CppPropertySets:GeneralArtifactProperties>
+  <CppPropertySets:GeneralDependencyProperties xmi:id="_KokHsCh8Eem0UtZqFR6jHw" base_Dependency="_Koi5kCh8Eem0UtZqFR6jHw" kindInHeader="inclusion"/>
+  <CppPropertySets:GeneralDependencyProperties xmi:id="_bHfYQCh8Eem0UtZqFR6jHw" base_Dependency="_aH7_wCh8Eem0UtZqFR6jHw" kindInHeader="none"/>
+  <CppPropertySets:GeneralDependencyProperties xmi:id="_vd_-YCh8Eem0UtZqFR6jHw" base_Dependency="_usAgwCh8Eem0UtZqFR6jHw" kindInHeader="none"/>
 </xmi:XMI>

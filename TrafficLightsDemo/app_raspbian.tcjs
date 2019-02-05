@@ -1,0 +1,55 @@
+let tc = TCF.define(TCF.CPP_TRANSFORM);
+tc.pocoLoc = 'D:\\poco-1.9.0';
+tc.sources = [
+    'platform:/resource/TrafficLightsDemo/TrafficLightComponent.emx#_rx2SkNXDEei3BJT-OqdJZA'
+];
+tc.topCapsule = 'platform:/resource/TrafficLightsDemo/TrafficLightComponent.emx#_4gz4gNXDEei3BJT-OqdJZA';
+tc.createTargetProject = true;
+tc.targetProject = '/TrafficLightsDemo_pitarget';
+tc.compilationMakeCommand = '$defaultMakeCommand';
+
+tc.threads = [
+{
+    name: 'MainThread',
+    implClass: 'RTPeerController',
+    stackSize: '20000',
+    priority: 'DEFAULT_MAIN_PRIORITY',
+},
+{
+    name: 'TimerThread',
+    implClass: 'RTTimerController',
+    stackSize: '20000',
+    priority: 'DEFAULT_TIMER_PRIORITY',
+},
+{
+    name: 'ServerThread',
+    implClass: 'RTPeerController',
+    stackSize: '20000',
+    priority: 'DEFAULT_MAIN_PRIORITY',
+    logical: [
+        'ServerThread'
+    ]
+},
+{
+    name: 'PushButtonThread',
+    implClass: 'RTPeerController',
+    stackSize: '20000',
+    priority: 'DEFAULT_MAIN_PRIORITY',
+    logical: [
+        'PushButtonThread'
+    ]
+}
+];
+tc.prerequisites = [
+    'platform:/resource/LibHttpServer/httpServerLib.tcjs'
+];
+tc.executableName = 'executable$(EXEC_EXT)';
+tc.compilationMakeType = MakeType.GNU_make;
+tc.compileArguments = '$(DEBUG_TAG) -fexceptions -std=c++11 -D_GLIBCXX_USE_CXX11_ABI=1';
+tc.inclusionPaths = [
+    'D:\\rsarte\\TargetRTS\\Raspberry-TargetRTS\\TargetRTS\\src\\target\\RPI9'
+];
+tc.linkArguments = '-std=c++11 -ldl -lrt -LD:/eclipse-workspace/rtist_demo/Poco_Foundation/Debug -lPoco_Foundation -LD:/eclipse-workspace/rtist_demo/Poco_Net/Debug -lPoco_Net';
+tc.targetConfiguration = 'RPI9T.ARM-gnu-6.3';
+tc.targetServicesLibrary = 'D:\\rsarte\\TargetRTS\\Raspberry-TargetRTS\\TargetRTS_gcc603';
+tc.compileCommand = 'arm-linux-gnueabihf-g++';

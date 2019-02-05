@@ -44,18 +44,18 @@ app.get('/jquery', function(req, res) {
 
 var rtAppCallback = null;
 
-// Messages from web application
+// Messages from web application to RT application 
 app.get('/ped_button', function(req, res) {
     if (!rtAppCallback) {
         console.log('RT application not running!');
         return;
     }
-    
+
     rtAppCallback('ped_button');    
     res.end();
 });
 
-// Messages to RT application
+// Attempts to fetch a message to the RT application
 app.get('/command', function(req, res) {
     console.log('Ready for command');
     rtAppCallback = function (cmd) {
