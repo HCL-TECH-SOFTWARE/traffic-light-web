@@ -1710,10 +1710,7 @@ configureServer(webhost, webport);</body>
         <name xsi:nil="true"/>
       </packagedElement>
     </packagedElement>
-    <packagedElement xmi:type="uml:Artifact" xmi:id="_KofPMCh8Eem0UtZqFR6jHw" name="Utils" clientDependency="_Koi5kCh8Eem0UtZqFR6jHw"/>
-    <packagedElement xmi:type="uml:Dependency" xmi:id="_Koi5kCh8Eem0UtZqFR6jHw" name="" client="_KofPMCh8Eem0UtZqFR6jHw">
-      <supplier xmi:type="uml:Class" href="platform:/resource/IoTBecomeAnRTist/MainModel.emx#_5TgPcCOQEem0UtZqFR6jHw?RTApp/StdString?"/>
-    </packagedElement>
+    <packagedElement xmi:type="uml:Artifact" xmi:id="_KofPMCh8Eem0UtZqFR6jHw" name="Utils"/>
     <packagedElement xmi:type="uml:Dependency" xmi:id="_aH7_wCh8Eem0UtZqFR6jHw" name="" supplier="_KofPMCh8Eem0UtZqFR6jHw" client="_UqQ4sNXTEei7WZvlxd1NlA"/>
     <packagedElement xmi:type="uml:Dependency" xmi:id="_usAgwCh8Eem0UtZqFR6jHw" name="" supplier="_KofPMCh8Eem0UtZqFR6jHw" client="_FXIDoNXEEei3BJT-OqdJZA"/>
     <profileApplication xmi:id="_rx25zNXDEei3BJT-OqdJZA">
@@ -1849,10 +1846,9 @@ configureServer(webhost, webport);</body>
     <rootFragment xmi:type="uml:Transition" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_wbFagd62Eeife8wA8rm4kw?LibHttpServer/HttpServer_In/State%20Machine/Region1/Initial?"/>
   </UMLRealTime:RTRedefinableElement>
   <CppPropertySets:GeneralArtifactProperties xmi:id="_KojgoCh8Eem0UtZqFR6jHw" base_Artifact="_KofPMCh8Eem0UtZqFR6jHw">
-    <Header xmi:id="_KojgoSh8Eem0UtZqFR6jHw" body="void getWebHostAndPort(std::string&amp; webhost, unsigned int&amp; webport);"/>
+    <Header xmi:id="_KojgoSh8Eem0UtZqFR6jHw" body="#include &lt;string>&#xD;&#xA;&#xD;&#xA;void getWebHostAndPort(std::string&amp; webhost, unsigned int&amp; webport);"/>
     <Implementation xmi:id="_Kojgoih8Eem0UtZqFR6jHw" body="void getWebHostAndPort(std::string&amp; webhost, unsigned int&amp; webport) {&#xD;&#xA;&#x9;int ac = RTMain::argCount();&#xD;&#xA;&#x9;const char * const * av = RTMain::argStrings();&#xD;&#xA;&#xD;&#xA;&#x9;while( --ac > 0 ) {&#xD;&#xA;&#x9;&#x9;const char* arg = *++av;&#xD;&#xA;&#x9;&#x9;if( RTMemoryUtil::strcmp( arg, &quot;-webhost=&quot;, 9 ) == 0 )&#xD;&#xA;&#x9;&#x9;&#x9;webhost = *av + 9;&#xD;&#xA;&#x9;&#x9;if( RTMemoryUtil::strcmp( arg, &quot;-webport=&quot;, 9 ) == 0 )&#xD;&#xA;&#x9;&#x9;&#x9;webport = RTMemoryUtil::atoi(*av + 9);&#xD;&#xA;&#x9;}&#xD;&#xA;}"/>
   </CppPropertySets:GeneralArtifactProperties>
-  <CppPropertySets:GeneralDependencyProperties xmi:id="_KokHsCh8Eem0UtZqFR6jHw" base_Dependency="_Koi5kCh8Eem0UtZqFR6jHw" kindInHeader="inclusion"/>
   <CppPropertySets:GeneralDependencyProperties xmi:id="_bHfYQCh8Eem0UtZqFR6jHw" base_Dependency="_aH7_wCh8Eem0UtZqFR6jHw" kindInHeader="none"/>
   <CppPropertySets:GeneralDependencyProperties xmi:id="_vd_-YCh8Eem0UtZqFR6jHw" base_Dependency="_usAgwCh8Eem0UtZqFR6jHw" kindInHeader="none"/>
 </xmi:XMI>

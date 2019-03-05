@@ -17,13 +17,14 @@ Note: The communication with the web server uses the [lib-http-server](https://g
 ## Building and running the traffic light controller software
 * Create an Eclipse workspace and import the project in the TrafficLightsDemo folder.
 * Also import the project from the [lib-http-server](https://github.com/hcl-pnp-rtist/lib-http-server) library.
-* By default, the code will be compiled and linked with MinGW. If you want to use other build tools, double-click the transformation configuration (TC) called 'app' and edit the properties as necessary (typically "TargetRTS configuration", "Make type" and "Make command").
-* Right-click on the TC and do **Build**.
+* Pick the transformation configuration (TC) that corresponds to your platform. TCs for Windows (Visual Studio and MinGW) and Raspbian are provided. If you want to build for another platform copy one of these TCs and update necessary properties (typically "TargetRTS configuration", "Make type" and "Make command").
+* Update the chosen TC by setting the property tc.pocoLoc to the location of the POCO library.
+* If you use a version of RTist older than 10.3 2018.48 you must also enable support for file artifacts in the TC.
+* Build the TC by right-clicking on it and do **Build**.
 * `cd <workspace-folder>\TrafficLightsDemo_target\default`
+* If you have built POCO as shared libraries remember to set the PATH variable (on Windows) or LD\_LIBRARY\_PATH (on Unix) to include the folder where they are located. For 64 bit builds the folder is called 'bin64' and is in the POCO root folder. 
 * `executable.exe -URTS_DEBUG=quit`
 
 ## How the application works
 When started the application begins to cycle the traffic light from red to green to yellow and back to red again. This cycling is driven by a timer. When the application receives a request for a pedestrian to cross the street (it can for example be triggered by pressing the button in the web application), it will put the traffic light to the Red state. After a while it will then turn the pedestrian signal from Stop to Walk and then back to Stop. Finally it starts to cycle the traffic light again.  
 Each time the traffic light or pedestrian light changes state, a message is sent to the web application using an HTTP request. The web application in turn translates this into changing the graphics in the web application by sending a message over a web socket.
-
-

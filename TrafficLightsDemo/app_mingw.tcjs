@@ -1,0 +1,54 @@
+// Windows - MinGW
+let tc = TCF.define(TCF.CPP_TRANSFORM);
+tc.pocoLoc = 'D:\\poco-mingw';
+tc.sources = [
+    'platform:/resource/TrafficLightsDemo/TrafficLightComponent.emx#_rx2SkNXDEei3BJT-OqdJZA'
+];
+tc.topCapsule = 'platform:/resource/TrafficLightsDemo/TrafficLightComponent.emx#_4gz4gNXDEei3BJT-OqdJZA';
+tc.createTargetProject = true;
+tc.targetProject = '/TrafficLightsDemo_target';
+tc.compilationMakeCommand = 'mingw32-make';
+
+tc.compilationMakeType = MakeType.GNU_make;
+tc.targetConfiguration = 'WinT.x64-MinGw-8.1.0';
+tc.compileArguments = '$(DEBUG_TAG) -fexceptions';
+
+tc.threads = [
+{
+    name: 'MainThread',
+    implClass: 'RTPeerController',
+    stackSize: '20000',
+    priority: 'DEFAULT_MAIN_PRIORITY',
+},
+{
+    name: 'TimerThread',
+    implClass: 'RTTimerController',
+    stackSize: '20000',
+    priority: 'DEFAULT_TIMER_PRIORITY',
+},
+{
+    name: 'ServerThread',
+    implClass: 'RTPeerController',
+    stackSize: '20000',
+    priority: 'DEFAULT_MAIN_PRIORITY',
+    logical: [
+        'ServerThread'
+    ]
+},
+{
+    name: 'PushButtonThread',
+    implClass: 'RTPeerController',
+    stackSize: '20000',
+    priority: 'DEFAULT_MAIN_PRIORITY',
+    logical: [
+        'PushButtonThread'
+    ]
+}
+];
+tc.prerequisites = [
+    'platform:/resource/LibHttpServer/httpServerLib.tcjs'
+];
+tc.executableName = 'executable$(EXEC_EXT)';
+tc.targetServicesLibrary = 'D:\\\\git\\\\rsarte-target-rts\\\\rsa_rt\\\\C++\\\\TargetRTS';
+tc.linkArguments = '-LD:/poco-mingw/bin -lPocoFoundation -lPocoNet';
+tc.compileCommand = '$(CC) ';
