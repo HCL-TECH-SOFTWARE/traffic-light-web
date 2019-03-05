@@ -17,13 +17,13 @@ Note: The communication with the web server uses the [lib-http-server](https://g
 ## Building and running the traffic light controller software
 * Create an Eclipse workspace and import the project in the TrafficLightsDemo folder.
 * Also import the project from the [lib-http-server](https://github.com/hcl-pnp-rtist/lib-http-server) library.
-* Pick the transformation configuration (TC) that corresponds to your platform. TCs for Windows (Visual Studio and MinGW) and Raspbian are provided. If you want to build for another platform copy one of these TCs and update necessary properties (typically "TargetRTS configuration", "Make type" and "Make command").
+* Pick the transformation configuration (TC) that corresponds to your platform. TCs for Windows (Visual Studio 2017 and MinGW) and Raspbian (with GCC 6.0.3) are provided. If you want to build for another platform copy one of these TCs and update necessary properties (typically "TargetRTS configuration", "Make type" and "Make command").
 * Update the chosen TC by setting the property tc.pocoLoc to the location of the POCO library.
 * If you use a version of RTist older than 10.3 2018.48 you must also enable support for file artifacts in the TC.
-* Build the TC by right-clicking on it and do **Build**.
+* Build the TC by right-clicking on it and do **Build**. If you build for the Raspberry Pi you need to transfer the built executable to the Pi (the Eclipse Remote Systems Plugin can help with that).
 * `cd <workspace-folder>\TrafficLightsDemo_target\default`
 * If you have built POCO as shared libraries remember to set the PATH variable (on Windows) or LD\_LIBRARY\_PATH (on Unix) to include the folder where they are located. For 64 bit builds the folder is called 'bin64' and is in the POCO root folder. 
-* `executable.exe -URTS_DEBUG=quit`
+* `executable.exe -URTS_DEBUG=quit -webhost=<HOST> -webport=<PORT>` where you should set `<HOST>` and `<PORT>` to where you run the web application.
 
 ## How the application works
 When started the application begins to cycle the traffic light from red to green to yellow and back to red again. This cycling is driven by a timer. When the application receives a request for a pedestrian to cross the street (it can for example be triggered by pressing the button in the web application), it will put the traffic light to the Red state. After a while it will then turn the pedestrian signal from Stop to Walk and then back to Stop. Finally it starts to cycle the traffic light again.  
