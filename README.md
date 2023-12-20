@@ -1,7 +1,7 @@
 # traffic-light-web
 <img src="https://github.com/hcl-pnp-rtist/traffic-light-web/blob/master/webapp/public/images/screenshot.png" width="100" height="100">
 
-A traffic light controller implemented in [Model RealTime](https://www.hcl-software.com/devops-model-realtime). Communicates with a web server (implemented in Node JS) for visualizing application behavior in a web application. Also shows how a web application can send messages to the C++ application.
+A traffic light controller implemented in [DevOps Model RealTime](https://www.hcl-software.com/devops-model-realtime). Communicates with a web server (implemented in Node JS) for visualizing application behavior in a web application. Also shows how a web application can send messages to the C++ application.
 
 Note: The communication with the web server uses the [lib-http-server](https://github.com/HCL-TECH-SOFTWARE/lib-http-server) library, so you must clone that repository also into your workspace.
 
