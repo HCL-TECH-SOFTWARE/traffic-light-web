@@ -1,31 +1,32 @@
-// Windows - Visual Studio 15
+// Windows - Visual Studio 17
 let tc = TCF.define(TCF.CPP_TRANSFORM);
-tc.pocoLoc = 'D:\\github\\poco';
 tc.sources = [
-    'platform:/resource/TrafficLightsDemo/TrafficLightComponent.emx#_rx2SkNXDEei3BJT-OqdJZA'
+    'platform:/resource/TrafficLightsDemo/TrafficLightComponent.emx#_rx2SkNXDEei3BJT-OqdJZA',
 ];
-tc.topCapsule = 'platform:/resource/TrafficLightsDemo/TrafficLightComponent.emx#_4gz4gNXDEei3BJT-OqdJZA';
-tc.createTargetProject = true;
-tc.targetProject = '/TrafficLightsDemo_target';
+tc.prerequisites = [
+    'platform:/resource/LibHttpServer/httpServerLib_static.tcjs',
+];
+tc.apocoLoc = '$(RSA_RT_HOME)/tcpserver/poco/';
 tc.compilationMakeCommand = '$defaultMakeCommand';
-
 tc.compilationMakeType = MakeType.MS_nmake;
-tc.targetConfiguration = 'WinT.x64-VisualC++-15.0';
-tc.compileArguments = '$(DEBUG_TAG) /MD';
-tc.linkArguments = '/DEBUG /MACHINE:X64 /LIBPATH:"' + tc.pocoLoc + '\\lib64"';
+tc.compileArguments = '$(DEBUG_TAG) /MD /DPOCO_STATIC';
+tc.createTargetProject = true;
+tc.executableName = 'executable$(EXEC_EXT)';
 
+tc.targetConfiguration = 'WinT.x64-VisualC++-17.0';
+tc.targetProject = '/TrafficLightsDemo_target';
 tc.threads = [
 {
     name: 'MainThread',
     implClass: 'RTPeerController',
     stackSize: '20000',
-    priority: 'DEFAULT_MAIN_PRIORITY',
+    priority: 'DEFAULT_MAIN_PRIORITY'
 },
 {
     name: 'TimerThread',
     implClass: 'RTTimerController',
     stackSize: '20000',
-    priority: 'DEFAULT_TIMER_PRIORITY',
+    priority: 'DEFAULT_TIMER_PRIORITY'
 },
 {
     name: 'ServerThread',
@@ -33,7 +34,7 @@ tc.threads = [
     stackSize: '20000',
     priority: 'DEFAULT_MAIN_PRIORITY',
     logical: [
-        'ServerThread'
+        'ServerThread',
     ]
 },
 {
@@ -42,11 +43,18 @@ tc.threads = [
     stackSize: '20000',
     priority: 'DEFAULT_MAIN_PRIORITY',
     logical: [
-        'PushButtonThread'
+        'PushButtonThread',
     ]
-}
+},
 ];
-tc.prerequisites = [
-    'platform:/resource/LibHttpServer/httpServerLib.tcjs'
+tc.topCapsule = 'platform:/resource/TrafficLightsDemo/TrafficLightComponent.emx#_4gz4gNXDEei3BJT-OqdJZA';
+
+tc.userLibraries = [
+    '$(RSA_RT_HOME)\\tcpserver\\poco\\WinT.x64-VisualC++-17.0\\PocoNetmd.lib',
+    '$(RSA_RT_HOME)\\tcpserver\\poco\\WinT.x64-VisualC++-17.0\\PocoJSONmd.lib',
+    '$(RSA_RT_HOME)\\tcpserver\\poco\\WinT.x64-VisualC++-17.0\\PocoFoundationmd.lib',
+    'Ws2_32.lib',
+    'Iphlpapi.lib',
+    'Advapi32.lib',
 ];
 tc.executableName = 'executable$(EXEC_EXT)';
