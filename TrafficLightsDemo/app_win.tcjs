@@ -6,7 +6,7 @@ tc.sources = [
 tc.prerequisites = [
     'platform:/resource/LibHttpServer/httpServerLib_static.tcjs',
 ];
-tc.apocoLoc = '$(RSA_RT_HOME)/tcpserver/poco/';
+
 tc.compilationMakeCommand = '$defaultMakeCommand';
 tc.compilationMakeType = MakeType.MS_nmake;
 tc.compileArguments = '$(DEBUG_TAG) /MD /DPOCO_STATIC';
@@ -57,4 +57,4 @@ tc.userLibraries = [
     'Iphlpapi.lib',
     'Advapi32.lib',
 ];
-tc.executableName = 'executable$(EXEC_EXT)';
+

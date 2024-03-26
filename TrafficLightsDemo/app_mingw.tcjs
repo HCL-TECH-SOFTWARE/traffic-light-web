@@ -10,10 +10,9 @@ tc.compilationMakeCommand = 'mingw32-make';
 
 tc.compilationMakeType = MakeType.GNU_make;
 tc.compileArguments = '$(DEBUG_TAG) -fexceptions  -DPOCO_STATIC';
-tc.compileCommand = '$(CC) ';
+tc.compileCommand = '$(CC)';
 tc.createTargetProject = true;
 tc.executableName = 'executable$(EXEC_EXT)';
-tc.linkArguments = '';
 tc.pocoLoc = '$(RSA_RT_HOME)/tcpserver/poco';
 tc.targetConfiguration = 'WinT.x64-MinGw-12.2.0';
 tc.targetProject = '/TrafficLightsDemo_target';
