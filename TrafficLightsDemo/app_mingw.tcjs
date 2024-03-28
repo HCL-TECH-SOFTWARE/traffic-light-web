@@ -6,7 +6,7 @@ tc.sources = [
 tc.prerequisites = [
     'platform:/resource/LibHttpServer/httpServerLib.tcjs',
 ];
-tc.compilationMakeCommand = 'mingw32-make';
+tc.compilationMakeCommand = '$defaultMakeCommand';
 
 tc.compilationMakeType = MakeType.GNU_make;
 tc.compileArguments = '$(DEBUG_TAG) -fexceptions  -DPOCO_STATIC';
